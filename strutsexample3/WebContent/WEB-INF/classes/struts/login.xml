@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="struts" namespace="/" extends="struts-default">
+		<interceptors>
+		<!-- 拦截器用于将输入属性进行转换，如“女”转为F -->
+		
+		<interceptor name="NameTrans" class="com.example.db.intercep.NameTransInterceptor">
+		
+		</interceptor>
+		
+		</interceptors>
+		<action name="login" class="loginAction" method="login">
+			<result name="success">
+				/welcome.jsp
+			</result>
+			<result name="error">
+				/error.jsp
+			</result>
+		</action>
+		<action name="adduser" class="loginAction" method="addUser">			
+			<result name="success">
+				/welcome.jsp
+			</result>
+			<result name="error">
+				/register.jsp
+			</result>
+			
+	
+		
+		<interceptor-ref name="NameTrans"></interceptor-ref>
+		<!-- 定义默认拦截器,注意顺序，如果反过来则不能将SEX属性改为“F或M” -->
+		<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+	</package>
+</struts>

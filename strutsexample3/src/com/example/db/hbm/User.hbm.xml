@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.example.db">
+	<class name="User" table="mydocuser">
+	<id name="userId" type="string" column="userid"><generator class="assigned"/></id>
+	<property name="userName" column="username" type="string" not-null="true" length="64"/>
+	<property name="password" column="passwd" type="string" not-null="true" length="32"/>
+	<property name="pirv" column="priv" type="java.lang.Integer" not-null="true"/>
+	<property name="stat" column="stat" type="java.lang.Integer" not-null="true"/>
+	<property name="sex" column="sex" type="string" not-null="true" length="1"/>
+	<property name="email" column="email" type="string" length="32"/>
+	<set name = "userRole">
+		<key column ="userid"/>
+		<one-to-many class ="UserRole" />
+	</set>
+	</class>
+</hibernate-mapping>

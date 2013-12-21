@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<bean id="userDao" class="com.example.user.dao.impl.UserDao">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="userService" class = "com.example.user.service.impl.UserService">
+		<property name="UserDao"  ref="userDao"/>
+		<property name="UserRoleDao"  ref="userroleDao"/>
+	</bean>
+	<bean id="loginAction" class = "com.example.LoginAction">
+		<property name="userService"  ref="userService"/>
+	</bean>
+	<bean id="userroleDao" class="com.example.role.dao.impl.UserRoleDao">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+</beans>
