@@ -1,0 +1,15 @@
+#!/bin/sh
+#fun
+do_num(){
+	for x in $*
+	do
+        echo $x
+	if [ -f $x ]; then
+	echo "$x exist"
+	else
+	echo "$x not exist"
+	fi
+	done		
+}
+echo "the parameters are $*"
+do_num $@
